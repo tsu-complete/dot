@@ -5,12 +5,12 @@ echo "-GIT"
 retr () {
     o=$(curl --silent -w "%{http_code}" -o $2 $1)
     if [[ $o == 2* ]];then
-        echo "-- [32m[success][0m"
+        echo "---[32msuccess[0m"
     elif [[ $o == 4* ]];then
-        echo "-- [32m[failure][0m"
+        echo "---[32mfailure[0m"
         exit $o
     else
-        echo "-- [35m[unknown failure][0m"
+        echo "---[35munknown failure[0m"
         exit $o
     fi
 }

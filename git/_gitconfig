@@ -24,11 +24,15 @@
     frag = magenta bold
     old = red bold
     new = green bold
+    whitespace = red reverse
 
 [color "status"]
     added = green
     changed = yellow
     untracked = red
+
+[difftool]
+    prompt = false
 
 [alias]
     aliases = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\ \t => \\2/' | sort

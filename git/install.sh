@@ -25,11 +25,19 @@ retr https://www.gitignore.io/api/linux,osx ~/.gitignore
 echo "--global config"
 inst git/_gitconfig ~/.gitconfig
 
-read -p "---prompt: user.name  : " uname
-read -p "---prompt: user.email : " email
+read -p "---prompt: user.name  : " confuname
+read -p "---prompt: user.email : " confemail
+read -p "---prompt: editor     : " confeditor
+read -p "---prompt: difftool   : " confdifftool
 
-echo "" >> ~/.gitconfig
-echo "[user]" >> ~/.gitconfig
-echo "    name = $uname" >> ~/.gitconfig
-echo "    email = $email" >> ~/.gitconfig
+echo "
+# user settings
+[user]
+    name = $confuname
+    email = $confemail
+[core]
+    editor = $confeditor
+[diff]
+    tool = $confdifftool
+" >> ~/.gitconfig
 

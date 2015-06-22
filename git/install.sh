@@ -7,7 +7,7 @@ retr () {
     if [[ $o == 2* ]];then
         echo "---[32msuccess[0m"
     elif [[ $o == 4* ]];then
-        echo "---[32mfailure[0m"
+        echo "---[31mfailure[0m"
         exit $o
     else
         echo "---[35munknown failure[0m"

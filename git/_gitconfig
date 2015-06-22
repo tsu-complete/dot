@@ -61,6 +61,7 @@
     churn = !git log --all -M -C --name-only --format='format:' "$@" | sort | grep -v '^$' | uniq -c | sort | awk 'BEGIN {print "count,file"} {print $1 "," $2}'
 
     # commit
+    uncommit = reset --soft HEAD~1
     detail = log -nl -p --format=fuller
 
     # stage

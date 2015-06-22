@@ -1,16 +1,16 @@
-#!/bin/bash
+#!/bin/sh
 
 echo "-GIT"
 
 retr () {
     o=$(curl --silent -w "%{http_code}" -o $2 $1)
     if [[ $o == 2* ]];then
-        echo -n " [32m[success][0m"
+        echo "-- [32m[success][0m"
     elif [[ $o == 4* ]];then
-        echo -n " [32m[failure][0m"
+        echo "-- [32m[failure][0m"
         exit $o
     else
-        echo -n " [35m[unknown failure][0m"
+        echo "-- [35m[unknown failure][0m"
         exit $o
     fi
 }
@@ -19,13 +19,11 @@ inst () {
     retr "https://raw.githubusercontent.com/tsu-complete/dot/master/$1" $2
 }
 
-echo -n "--global ignore"
+echo "--global ignore"
 retr https://www.gitignore.io/api/linux,osx ~/.gitignore
-echo
 
-echo -n "--global config"
+echo "--global config"
 inst git/_gitconfig ~/.gitconfig
-echo
 
 read -p "---prompt: user.name  : " uname
 read -p "---prompt: user.email : " email

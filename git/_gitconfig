@@ -37,6 +37,19 @@
 [alias]
     aliases = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\ \t => \\2/' | sort
 
+    # tiny
+    a = add
+    b = branch
+    c = commit
+    d = diff
+    f = fetch
+    l = log
+    m = merge
+    o = checkout
+    p = push
+    r = rebase
+    s = status
+
     # branch
     br = branch -av
     brname = !git branch | grep "^*" | awk '{ print $2 }'

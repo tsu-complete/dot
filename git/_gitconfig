@@ -68,7 +68,7 @@
     unstage = reset HEAD --
 
     # log
-    last = log -1
+    last = !{ git log -1 --color; echo; git diff HEAD^ --color;  } | less
     recent = log --oneline -5
     g = !git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 

@@ -84,3 +84,6 @@
     export = archive -o latest.tar.gz -9 --prefix=latest/
     trim = !git reflog expire --expire=now --all && git gc --prune=now
 
+    #config
+    save-cred = config credential.helper store
+

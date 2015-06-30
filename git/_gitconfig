@@ -36,7 +36,7 @@
 
 [alias]
     aliases = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\ \t => \\2/' | sort
-    which = !git aliases | grep $1
+    which = "!git aliases | grep \"^$1 \"|| git aliases | grep --color \"$1\"|| echo \"not found: \""
 
     # tiny
     a = add

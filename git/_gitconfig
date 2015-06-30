@@ -85,5 +85,5 @@
     trim = !git reflog expire --expire=now --all && git gc --prune=now
 
     #config
-    save-cred = config credential.helper store
+    save-cred = config credential.helper store --file="./.git/.cred"
 

@@ -35,52 +35,52 @@
     prompt = false
 
 [alias]
-    aliases = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\ \t => \\2/' | sort
+    aliases = "!git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\ \t => \\2/' | sort"
     which = "!git aliases | grep \"^$1 \"|| git aliases | grep --color \"$1\"|| echo \"not found: \""
 
     # tiny
-    a = add
-    b = branch
-    c = commit
-    d = diff
-    f = fetch
-    l = log
-    m = merge
-    o = checkout
-    p = push
-    r = rebase
-    s = status
+    a = "add"
+    b = "branch"
+    c = "commit"
+    d = "diff"
+    f = "fetch"
+    l = "log"
+    m = "merge"
+    o = "checkout"
+    p = "push"
+    r = "rebase"
+    s = "status"
 
     # branch
-    br = branch -av
-    brname = !git branch | grep "^*" | awk '{ print $2 }'
-    bradd = branch
-    brdel = branch -D
+    br = "branch -av"
+    brname = "!git branch | grep \"^*\" | awk '{ print $2 }'"
+    bradd = "branch"
+    brdel = "branch -D"
 
     # file
-    root = rev-parse --show-toplevel
-    churn = !git log --all -M -C --name-only --format='format:' "$@" | sort | grep -v '^$' | uniq -c | sort | awk 'BEGIN {print "count,file"} {print $1 "," $2}'
+    root = "rev-parse --show-toplevel"
+    churn = "!git log --all -M -C --name-only --format='format:' \"$@\" | sort | grep -v '^$' | uniq -c | sort | awk 'BEGIN {print \"count,file\"} {print $1 \",\" $2}'"
 
     # commit
-    uncommit = reset --soft HEAD~1
-    detail = log -nl -p --format=fuller
+    uncommit = "reset --soft HEAD~1"
+    detail = "log -nl -p --format=fuller"
 
     # stage
-    unstage = reset HEAD --
+    unstage = "reset HEAD --"
 
     # log
     last = "!{ git log -1 --color; echo; git diff HEAD^ --color;  } | less"
-    recent = log --oneline -5
-    g = !git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+    recent = "log --oneline -5"
+    g = "!git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
 
     # submod
-    sub-update = submodule update --init
+    sub-update = "submodule update --init"
 
     # stats
-    stat-lines = !git ls-files | xargs wc -l
-    stat-lines-authored = !git ls-tree -r -z --name-only HEAD -- $1 | xargs -0 -n1 git blame --line-porcelain HEAD |grep  "^author "|sort|uniq -c|sort -nr
+    stat-lines = "!git ls-files | xargs wc -l"
+    stat-lines-authored = "!git ls-tree -r -z --name-only HEAD -- $1 | xargs -0 -n1 git blame --line-porcelain HEAD |grep  \"^author \"|sort|uniq -c|sort -nr"
 
     # misc
-    export = archive -o latest.tar.gz -9 --prefix=latest/
-    trim = !git reflog expire --expire=now --all && git gc --prune=now
+    export = "archive -o latest.tar.gz -9 --prefix=latest/"
+    trim = "!git reflog expire --expire=now --all && git gc --prune=now"
 

@@ -54,6 +54,9 @@
     r = "rebase"
     s = "status"
 
+    # modified tiny
+    ss = "status -s"
+
     # branch
     br = "branch -av"
     brname = "!git branch | grep \"^*\" | awk '{ print $2 }'"

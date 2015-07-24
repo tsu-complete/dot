@@ -72,7 +72,11 @@
     detail = "log -nl -p --format=fuller"
 
     # stage
+    stage = "add"
     unstage = "reset HEAD --"
+
+    # stash
+    unstash = "stash pop"
 
     # log
     last = "!{ git log -1 --color; echo; git diff HEAD^ --color;  } | less"

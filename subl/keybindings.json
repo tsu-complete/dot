@@ -1,0 +1,5 @@
+
+[
+    { "keys": ["ctrl+e"], "command": "toggle_side_bar" }
+]
+

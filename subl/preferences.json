@@ -1,0 +1,27 @@
+
+{
+    "auto_find_in_selection": true,
+    "copy_with_empty_selection": false,
+    "detect_indentation": true,
+    "draw_centered": false,
+    "draw_minimap_border": true,
+    "ensure_newline_at_eof_on_save": true,
+    "fade_fold_buttons": false,
+    "find_selected_text": true,
+    "highlight_line": true,
+    "highlight_modified_tabs": true,
+    "indent_guide_options":
+    [
+        "draw_active"
+    ],
+    "rulers":
+    [
+        80,
+        120
+    ],
+    "scroll_past_end": true,
+    "show_tab_close_buttons": false,
+    "translate_tabs_to_spaces": true,
+    "trim_trailing_white_space_on_save": true
+}
+

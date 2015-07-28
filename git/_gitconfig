@@ -52,10 +52,10 @@
     o = "checkout"
     p = "push"
     r = "rebase"
-    s = "status"
+    s = "status -s"
 
     # modified tiny
-    ss = "status -s"
+    ss = "status"
 
     # branch
     br = "branch -av"

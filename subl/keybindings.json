@@ -5,11 +5,11 @@
         "command": "toggle_side_bar"
     },
     {
-        "keys": ["ctrl+shift+o"]
+        "keys": ["ctrl+shift+o"],
         "command": "prompt_open_folder"
     },
     {
-        "keys": ["super+shift+o"]
+        "keys": ["super+shift+o"],
         "command": "prompt_open_folder"
     },
     {

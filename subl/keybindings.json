@@ -1,5 +1,24 @@
 
 [
-    { "keys": ["ctrl+e"], "command": "toggle_side_bar" }
+    {
+        "keys": ["ctrl+e"],
+        "command": "toggle_side_bar"
+    },
+    {
+        "keys": ["ctrl+shift+o"]
+        "command": "prompt_open_folder"
+    },
+    {
+        "keys": ["super+shift+o"]
+        "command": "prompt_open_folder"
+    },
+    {
+        "keys": ["ctrl+tab"],
+        "command": "next_view"
+    },
+    {
+        "keys": ["ctrl+shift+tab"],
+        "command": "prev_view"
+    }
 ]
 

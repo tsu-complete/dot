@@ -73,6 +73,9 @@
     uncommit = "reset --soft HEAD~1"
     detail = "log -nl -p --format=fuller"
 
+    # checkout
+    orphan = "checkout --orphan"
+
     # stage
     stage = "add"
     unstage = "reset HEAD --"

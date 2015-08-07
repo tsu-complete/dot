@@ -55,7 +55,9 @@
     s = "status -s"
 
     # modified tiny
+    aa = "add ."
     ss = "status"
+    fr = "!git fetch && git rebase"
 
     # branch
     br = "branch -av"

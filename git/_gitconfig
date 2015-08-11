@@ -75,6 +75,7 @@
 
     # checkout
     orphan = "checkout --orphan"
+    hash = "rev-parse --short HEAD"
 
     # stage
     stage = "add"

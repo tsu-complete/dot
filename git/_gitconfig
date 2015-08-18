@@ -47,7 +47,8 @@
     c = "commit"
     d = "diff"
     f = "fetch"
-    l = "log"
+    g = "!git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
+    l = "log --use-mailmap --decorate=short --oneline"
     m = "merge"
     o = "checkout"
     p = "push"
@@ -56,8 +57,11 @@
 
     # modified tiny
     aa = "add ."
-    ss = "status"
     fr = "!git fetch && git rebase"
+    ll = "log --pretty=\"%n %C(yellow)%h %C(black)| %Cgreen%<(14)%ar %C(black)| (%G?) %Cblue%<(14,trunc)%aN%Cred%d%n %C(cyan)%<(60,trunc)%s%Creset\""
+    lla = "log --use-mailmap --decorate=full --pretty=full"
+    ms = "log --merges"
+    ss = "status"
 
     # branch
     br = "branch -av"
@@ -77,6 +81,9 @@
     orphan = "checkout --orphan"
     hash = "rev-parse --short HEAD"
 
+    # merge
+    merges = "log --merges"
+
     # stage
     stage = "add"
     unstage = "reset HEAD --"
@@ -87,7 +94,6 @@
     # log
     last = "!{ git log -1 --color; echo; git diff HEAD^ --color;  } | less"
     recent = "log --oneline -5"
-    g = "!git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
 
     # submod
     sub-update = "submodule update --init"

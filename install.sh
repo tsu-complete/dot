@@ -57,14 +57,16 @@
   }
 
   inst () {
-    install -b -m 0644 "/tmp/dot/$1" "$2" &>/dev/null
+    install -b -m 0644 /tmp/dot/$1 $2 &>/dev/null
     sprint_perror $2
   }
 
   instdir () {
     install -d "$2" &>/dev/null
-    sprint_perror $2
-    inst /tmp/dot/$1/* $2
+    if [[ $? != 0 ]]; then
+      sprint_failure $2
+    fi
+    inst "$1/*" "$2"
   }
 # }}}
 
@@ -106,6 +108,19 @@ echo "
         fi
 
         cat ~/.gitudata >> ~/.gitconfig
+      endscope
+    endscope
+  # }}}
+
+  # vim {{{
+    scope VIM
+      scope vimrc
+        inst vim/_vimrc ~/.vimrc
+      endscope
+      scope support
+        instdir vim/_vim ~/.vim
+        rm -rf ~/.vim/bundle # reset for vundle
+        vim
       endscope
     endscope
   # }}}

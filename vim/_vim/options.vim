@@ -9,7 +9,7 @@
   \,'airblade/vim-gitgutter'
   \ ]
 
-  function! g:tsu_post_plugins(base)
+  function! Tsu_post_plugins(base)
     " airline {{{
       if isdirectory(a:base.'/vim-airline')
         let g:airline_left_sep = ' '

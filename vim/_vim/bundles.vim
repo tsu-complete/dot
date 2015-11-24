@@ -24,4 +24,5 @@ if s:has_vundle == 0
   qa
 endif
 
-call g:tsu_post_plugins(s:base)
+call Tsu_post_plugins(s:base)
+

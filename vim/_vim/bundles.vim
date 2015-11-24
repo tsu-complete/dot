@@ -3,7 +3,7 @@ let s:base=g:tsu_storage.'bundle'
 
 let s:has_vundle=1
 if !isdirectory(glob(s:base.'/Vundle.vim/'))
-  exec 'silent !mkdir -p'.s:base
+  exec 'silent !mkdir -p '.s:base
   exec 'silent !git clone -q'.
     \ ' https://github.com/gmarik/Vundle.vim' s:base.'/Vundle.vim'
   let s:has_vundle=0

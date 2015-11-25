@@ -68,8 +68,9 @@
     # branch
     br = "branch -av"
     brname = "!git branch | grep \"^*\" | awk '{ print $2 }'"
-    bradd = "branch"
-    brdel = "branch -D"
+    ba = "branch"
+    bd = "branch -D"
+    brd = "push origin :$1 && echo \"Deleted $1\" || echo \"Failed to delete\""
 
     # file
     root = "rev-parse --show-toplevel"

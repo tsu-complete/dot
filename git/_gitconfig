@@ -48,6 +48,7 @@
     d = "diff"
     f = "fetch"
     g = "!git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
+    i = "init"
     l = "log --use-mailmap --decorate=short --oneline"
     m = "merge"
     n = "!git checkout -b $1; git push -u origin "

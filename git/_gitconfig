@@ -57,6 +57,7 @@
     q = "push -u"
     r = "rebase"
     s = "status -s"
+    w = "!git which"
 
     # modified tiny
     aa = "add ."

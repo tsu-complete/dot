@@ -1,0 +1,67 @@
+
+export ZSH=$HOME/.oh-my-zsh
+
+ZSH_THEME="tsu"
+
+export EDITOR="vim"
+export DIFFTOOL="vimdiff"
+
+# comment the following line to hide red dots whilst waiting for completion.
+COMPLETION_WAITING_DOTS="true"
+
+plugins=(git, zsh-syntax-highlighting, colored-man-pages)
+source $ZSH/oh-my-zsh.sh
+
+alias ll="ls -AFGgho"
+function lla () {
+  C=`ll`
+  D=`echo $C | grep ' [^.]*/$' --color=never`
+  [ -z "$D" ] || echo $fg[cyan]$D
+  E=`echo $C | grep '\*$' --color=never`
+  [ -z "$E" ] || echo $fg[yellow]$E
+  F=`echo $C | grep '^[^t].*[^/*]$' --color=never`
+  G=`echo $F | grep ' \.' --color=never`
+  [ -z "$G" ] || echo $fg[black]$G
+  H=`echo $F | grep ' \.' -v --color=never`
+  [ -z "$H" ] || echo $fg[white]$H
+}
+
+alias link='ln -s'
+alias :q='exit'
+alias :wq='exit'
+alias vim='mvim -v'
+
+alias ip="ifconfig | grep broadcast | cut -d' ' -f2"
+alias eip="curl icanhazip.com"
+
+alias editconfig="${EDITOR} ~/.zshrc; source ~/.zshrc"
+alias editrc='editconfig'
+alias edittheme="${EDITOR} ~/.oh-my-zsh/themes/$ZSH_THEME.zsh-theme; source ~/.zshrc"
+
+alias g="git"
+
+alias speedtest="curl http://speedtest.wdc01.softlayer.com/downloads/test10.zip > /dev/null"
+
+function command_not_found_handler() {
+  if [[ $1 =~ ^g ]]; then
+    g ${1:1} ${@:2}
+  else
+    echo "tsu: no such command: $1"
+  fi
+}
+
+function chpwd() {
+    emulate -L zsh
+    lla
+    echo
+    echo $fg[blue] $(dirs -c; dirs) $fg[normal]
+}
+
+
+export PATH="$HOME/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+
+archey
+
+tsu hide host
+tsu hide face
+

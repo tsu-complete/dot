@@ -90,7 +90,7 @@ prompt_status() {
 
 # ---------- prompt_dir() -----------------------------------------------------
 prompt_dir() {
-  local pth=$(dirs -c; dirs | rev | cut -f1,2,3 -d/ | rev)
+  local pth="%(5C.%-1~/… /%2~.%~)"
   echo -n "$fg[blue]$pth"
 }
 

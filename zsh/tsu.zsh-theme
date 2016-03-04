@@ -1,10 +1,4 @@
 
-# ---------- helper_space() ---------------------------------------------------
-helper_space() {
-  echo -n ' '
-}
-
-
 # ---------- helper_git() -----------------------------------------------------
 helper_git() {
   # inspired by https://github.com/elboletaire/zsh-theme-racotecnic
@@ -71,17 +65,23 @@ helper_git() {
   fi
 
   local branch=$(git branch --no-color | grep \* | cut -f2 -d' ')
-  echo -n "$fg[green]($branch)$STATUS "
+  echo -n " $fg[green]($branch)$STATUS"
 }
 
 # ---------- prompt_status() --------------------------------------------------
 prompt_status() {
-  [[ $RETVAL -ne 0 ]] && echo -n '%{%F{red}%}✘(%?)'
-  [[ $RETVAL -eq 0 ]] && echo -n '%{%F{green}%}✓'
-  [[ $UID -eq 0 ]] && echo -n ' %{%F{yellow}%}⚡'
-  local jcnt=$(jobs | grep -c "\[")
+  if [[ $RETVAL -eq 147 ]]; then
+    echo -n " $fg[red]404"
+  elif [[ $RETVAL -ne 0 ]]; then
+    echo -n " $fg[red]$RETVAL"
+  else
+    echo -n " $fg[green]0"
+  fi
+
+  [[ $UID -eq 0 ]] && echo -n " $fg[yellow]su"
+  local jcnt=$(jobs | grep -c '\[')
   if [ $jcnt -gt 0 ]; then
-    echo -n " $fg[cyan]⚙($jcnt)"
+    echo -n " $fg[cyan]&$jcnt"
   fi
 }
 
@@ -89,35 +89,32 @@ prompt_status() {
 # ---------- prompt_dir() -----------------------------------------------------
 prompt_dir() {
   local pth="%(5C.%-1~/… /%2~.%~)"
-  echo -n "$fg[blue]$pth"
+  echo -n " $fg[blue]$pth"
 }
 
 # ---------- prompt_host() ----------------------------------------------------
 prompt_host() {
-  [[ -z $TSU_HIDEUSER ]] && echo -n '%{%F{yellow}%}%n'
+  [[ -z $TSU_HIDEUSER ]] && echo -n ' %{%F{yellow}%}%n'
   [[ -z $TSU_HIDEHOST ]] && echo -n '%{%F{yellow}%}@%m'
 }
 
 # ---------- prompt_prompt() --------------------------------------------------
 prompt_prompt() {
-  echo -n '$'
+  echo -n ' $ '
 }
 
 # ---------- build_prompt() ---------------------------------------------------
 build_prompt() {
   RETVAL=$?
   echo
-  helper_space
   prompt_status
-  helper_space
+  rps1_face
+  rps1_time
   prompt_host
-  helper_space
   helper_git
   prompt_dir
   echo
-  helper_space
   prompt_prompt
-  helper_space
 }
 
 PROMPT='%{%f%b%k%}$(build_prompt)%{%f%b%k%}'
@@ -125,26 +122,15 @@ PROMPT='%{%f%b%k%}$(build_prompt)%{%f%b%k%}'
 
 # ---------- rps1_time() ------------------------------------------------------
 rps1_time() {
-  [[ -z $TSU_HIDETIME ]] && echo -n "%{%F{cyan}%}[$(echo $(date) | cut -d' ' -f4)]"
+  [[ -z $TSU_HIDETIME ]] && echo -n " $fg[cyan][$(echo $(date) | cut -d' ' -f4)]"
 }
 
 # ---------- rps1_face() -----------------------------------------------------
 rps1_face() {
   [[ -z $TSU_HIDEFACE ]] || return
-  [[ $RETVAL -ne 0 ]] && echo -n "$fg[red]:("
-  [[ $RETVAL -eq 0 ]] && echo -n "$fg[green]:)"
+  [[ $RETVAL -ne 0 ]] && echo -n " $fg[red]:("
+  [[ $RETVAL -eq 0 ]] && echo -n " $fg[green]:)"
 }
-
-# ---------- build_rps1() -----------------------------------------------------
-build_rps1() {
-  RETVAL=$?
-  helper_space
-  rps1_time
-  helper_space
-  rps1_face
-}
-
-RPS1='%{%f%b%k%}$(build_rps1)%{%f%b%k%}'
 
 # ---------- tsu() ------------------------------------------------------------
 tsu() {

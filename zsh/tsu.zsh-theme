@@ -147,7 +147,7 @@ PROMPT='%{%f%b%k%}$(build_prompt)%{%f%b%k%}'
 
 # ---------- rps1_time() ------------------------------------------------------
 rps1_time() {
-  [[ -z $TSU_HIDETIME ]] && echo -n " $fg[cyan][$(echo $(date) | cut -d' ' -f4)]"
+  [[ -z $TSU_HIDETIME ]] && echo -n " $fg[cyan]$(echo $(date) | cut -d' ' -f4)"
 }
 
 # ---------- rps1_face() -----------------------------------------------------

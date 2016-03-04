@@ -1,4 +1,28 @@
 
+# ---------- helper_svn() -----------------------------------------------------
+helper_svn() {
+  ref=$(command svn info . 2>/dev/null) || return
+  STATUS=$(svn status)
+
+  if [ -n "$status" ]; then
+    STATUS_BAR=""
+    STATUS_CNT=$(echo $STATUS | grep -c ^A)
+    STATUS_BAR="$STATUS_BAR $fg[green]+$STATUS_CNT"
+    STATUS_CNT=$(echo $STATUS | grep -c ^M)
+    STATUS_BAR="$STATUS_BAR $fg[yellow]~$STATUS_CNT"
+    STATUS_CNT=$(echo $STATUS | grep -c ^D)
+    STATUS_BAR="$STATUS_BAR $fg[red]-$STATUS_CNT"
+    STATUS_CNT=$(echo $STATUS | grep -c '^\?')
+    STATUS_BAR="$STATUS_BAR $fg[black]?$STATUS_CNT"
+    STATUS=" $fg[yellow][$STATUS_BAR$fg[yellow] ]"
+  fi
+
+  local repo=$(svn info . | grep "Repository Root" | sed 's/.*\///g')
+  local rev=$(svn info . | grep "Revision" | sed 's/.*: //g')
+
+  echo -n "$fg[green]($repo:$rev)$STATUS "
+}
+
 # ---------- helper_git() -----------------------------------------------------
 helper_git() {
   # inspired by https://github.com/elboletaire/zsh-theme-racotecnic
@@ -112,6 +136,7 @@ build_prompt() {
   rps1_time
   prompt_host
   helper_git
+  helper_svn
   prompt_dir
   echo
   prompt_prompt

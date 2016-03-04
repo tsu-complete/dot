@@ -39,12 +39,15 @@ alias zshrc='editconfig'
 alias edittheme="${EDITOR} ~/.oh-my-zsh/themes/$ZSH_THEME.zsh-theme; source ~/.zshrc"
 
 alias g="git"
+alias s="svn"
 
 alias speedtest="curl http://speedtest.wdc01.softlayer.com/downloads/test10.zip > /dev/null"
 
 function command_not_found_handler() {
   if [[ $1 =~ ^g ]]; then
     g ${1:1} ${@:2}
+  elif [[ $1 =~ ^s ]]; then
+    s ${1:1} ${@:2}
   else
     exit 147
   fi

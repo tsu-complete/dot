@@ -57,10 +57,8 @@ helper_git() {
     WORKING="$WORKING $fg[magenta]!$c_work_conflict"
   fi
 
-  if [[ -n $INDEXED && -n $WORKING ]]; then
+  if [[ -n $INDEXED || -n $WORKING ]]; then
     STATUS="$INDEXED $fg[yellow]|$WORKING"
-  else
-    STATUS="$INDEXED$WORKING"
   fi
 
   local stashes=$(git stash list | grep -c .)
